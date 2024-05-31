@@ -1,7 +1,15 @@
-import { ImageResponse } from "next/og";
 import posts from "../../../data.json";
 
-export function generateImageMetadata({ params }: { params: { id: string } }) {
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateImageMetadata({
+  params,
+}: {
+  params: { id: string };
+}) {
   const postId = Number(params.id);
   const { id, title, og } = posts[postId];
   return [
@@ -21,7 +29,7 @@ export function generateImageMetadata({ params }: { params: { id: string } }) {
   ];
 }
 
-export default function Fifth({ params }: { params: { id: string } }) {
+export default function Page({ params, searchParams }: Props) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1>FifthPage {params.id}</h1>
