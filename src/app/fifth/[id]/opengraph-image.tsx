@@ -14,8 +14,13 @@ export function generateImageMetadata({ params }: { params: { id: string } }) {
       size: { width: 48, height: 48 },
       alt: title + "오픈그래프",
       id: id,
-      title: title + "오픈그래프 테스트",
-      description: title + "오픈그래프 테스트" + id + "번 페이지",
+      openGraph: {
+        title: title + "오픈그래프 테스트",
+        description: title + "오픈그래프 테스트" + id + "번 페이지",
+        siteName: "연습용 사이트",
+        locale: "ko_KR",
+        type: "website",
+      },
     },
   ];
 }
