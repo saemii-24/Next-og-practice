@@ -1,34 +1,33 @@
 import posts from "../../../data.json";
+import { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateImageMetadata({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const postId = Number(params.id);
-  const { id, title, og } = posts[postId];
-  return [
-    {
-      contentType: "image/png",
-      size: { width: 48, height: 48 },
-      alt: title + "오픈그래프",
-      id: id,
-      openGraph: {
-        title: title + "오픈그래프 테스트",
-        description: title + "오픈그래프 테스트" + id + "번 페이지",
-        siteName: "연습용 사이트",
-        locale: "ko_KR",
-        type: "website",
-      },
-    },
-  ];
-}
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const id = Number(params.id);
+  const { title, og } = posts[id];
 
+  return {
+    title: title + " 제목" || "default title",
+    description: title + " 설명" || "default description",
+    openGraph: {
+      images: [
+        {
+          url: og,
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+  };
+}
 export default function Page({ params, searchParams }: Props) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
