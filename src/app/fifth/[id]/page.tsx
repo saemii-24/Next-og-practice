@@ -15,16 +15,28 @@ export async function generateMetadata(
   const { title, og } = posts[id];
 
   return {
-    title: title + " 제목" || "default title",
-    description: title + " 설명" || "default description",
+    title: title + " 설명" || "default title",
     openGraph: {
-      images: [
-        {
-          url: og,
-          width: 800,
-          height: 600,
-        },
-      ],
+      title: title + "오픈그래프 제목" || "오픈그래프 제목",
+      description: title + "오픈그래프 설명" || "오픈그래프 설명",
+      // images: [
+      //   {
+      //     url: og,
+      //     width: 800,
+      //     height: 600,
+      //   },
+      // ],
+    },
+    twitter: {
+      title: title + "트위터 제목" || "트위터 제목",
+      description: title + "트위터 설명" || "트위터 설명",
+      // images: [
+      //   {
+      //     url: og,
+      //     width: 800,
+      //     height: 600,
+      //   },
+      // ],
     },
   };
 }
