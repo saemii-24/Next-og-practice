@@ -1,53 +1,36 @@
 import { ImageResponse } from "next/og";
 import posts from "../../../data.json";
 
-export async function generateImageMetadata({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const { title, og } = posts[Number(params.id)];
+export const runtime = "edge";
 
-  return [
-    {
-      contentType: "image/png",
-      size: { width: 48, height: 48 },
-      id: "small",
-    },
-    {
-      contentType: "image/png",
-      size: { width: 72, height: 72 },
-      id: "medium",
-    },
-  ];
-}
+export const alt = "About Acme";
+export const size = {
+  width: 1200,
+  height: 630,
+};
+export const contentType = "image/png";
 
 export default async function Image({ params }: { params: { id: string } }) {
   const { title, og } = posts[Number(params.id)];
+
   return new ImageResponse(
     (
-      // ImageResponse JSX element
       <div
         style={{
-          fontSize: 184,
-          background: "black",
-          color: "white",
+          fontSize: 48,
+          backgroundImage: `url("${og}")`,
           width: "100%",
           height: "100%",
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "black",
-          backgroundImage: og,
+          justifyContent: "center",
         }}
       >
         {title}
       </div>
     ),
-    // ImageResponse options
     {
-      width: 1200,
-      height: 630,
+      ...size,
     }
   );
 }

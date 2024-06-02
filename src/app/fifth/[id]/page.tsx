@@ -19,24 +19,26 @@ export async function generateMetadata(
     openGraph: {
       title: title + "오픈그래프 제목" || "오픈그래프 제목",
       description: title + "오픈그래프 설명" || "오픈그래프 설명",
-      // images: [
-      //   {
-      //     url: og,
-      //     width: 800,
-      //     height: 600,
-      //   },
-      // ],
+      images: [
+        {
+          url: `https://next-og-practice.vercel.app/api/og?id=${id}`,
+          width: 800,
+          height: 600,
+          alt: title + "오픈그래프 이미지",
+        },
+      ],
     },
     twitter: {
       title: title + "트위터 제목" || "트위터 제목",
       description: title + "트위터 설명" || "트위터 설명",
-      // images: [
-      //   {
-      //     url: og,
-      //     width: 800,
-      //     height: 600,
-      //   },
-      // ],
+      images: [
+        {
+          url: `https://next-og-practice.vercel.app/api/og?id=${id}`,
+          width: 800,
+          height: 600,
+          alt: title + "트위터 이미지",
+        },
+      ],
     },
   };
 }
