@@ -16,10 +16,12 @@ export const contentType = "image/png";
 export default async function Image() {
   const font = await fetch(
     new URL(
-      "../../assets/fonts/NotoSansKR-SemiBold-Subset.woff2",
+      "../../assets/fonts/NotoSansKR-SemiBold-Subset.woff",
       import.meta.url
     )
   ).then((res) => res.arrayBuffer());
+
+  console.log(font);
 
   return new ImageResponse(
     (
