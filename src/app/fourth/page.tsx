@@ -1,5 +1,5 @@
 export const metadata = {
-  metadataBase: new URL("https://next-og-practice.vercel.app"),
+  // metadataBase: new URL("https://next-og-practice.vercel.app"),
   openGraph: {
     title: "4번째 페이지 연습",
     description: "4번째 페이지 오픈그래프 연습",

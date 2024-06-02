@@ -35,7 +35,7 @@ export default async function Image() {
           justifyContent: "center",
         }}
       >
-        third Page!
+        third Page! 세번째 페이지!
       </div>
     ),
     // ImageResponse options
