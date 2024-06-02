@@ -14,9 +14,12 @@ export const contentType = "image/png";
 
 // Image generation
 export default async function Image() {
-  // const font = await fetch(
-  //   new URL("../../assets/fonts/NotoSansKR-Light.ttf", import.meta.url)
-  // ).then((res) => res.arrayBuffer());
+  const font = await fetch(
+    new URL(
+      "../../assets/fonts/NotoSansKR-SemiBold-Subset.woff2",
+      import.meta.url
+    )
+  ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
@@ -43,13 +46,13 @@ export default async function Image() {
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.
       ...size,
-      // fonts: [
-      //   {
-      //     name: "NotoSansKR-Light",
-      //     data: font,
-      //     weight: 300,
-      //   },
-      // ],
+      fonts: [
+        {
+          name: "NotoSansKR-Light",
+          data: font,
+          weight: 600,
+        },
+      ],
     }
   );
 }
