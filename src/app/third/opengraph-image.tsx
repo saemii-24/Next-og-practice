@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import { ImageResponse } from "next/og";
 
 // Route segment config
@@ -15,16 +14,16 @@ export const contentType = "image/png";
 
 // Image generation
 export default async function Image() {
-  // Font
-  // const interSemiBold = fetch(
-  //   new URL("./Inter-SemiBold.ttf", import.meta.url)
-  // ).then((res) => res.arrayBuffer());
+  const font = await fetch(
+    new URL("../../assets/fonts/NotoSansKR-Light.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
       // ImageResponse JSX element
       <div
         style={{
+          fontFamily: "NotoSansKR-Light",
           fontSize: 128,
           background: "white",
           backgroundSize: "cover", // 전체 영역을 커버하도록 설정
@@ -44,14 +43,13 @@ export default async function Image() {
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.
       ...size,
-      // fonts: [
-      //   {
-      //     name: "Inter",
-      //     data: await interSemiBold,
-      //     style: "normal",
-      //     weight: 400,
-      //   },
-      // ],
+      fonts: [
+        {
+          name: "NotoSansKR-Light",
+          data: font,
+          weight: 300,
+        },
+      ],
     }
   );
 }

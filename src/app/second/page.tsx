@@ -1,5 +1,7 @@
 import ogImage from "./opengraph-image.jpg";
 
+console.log(ogImage);
+
 export const metadata = {
   metadataBase: new URL("https://next-og-practice.vercel.app"),
   openGraph: {
