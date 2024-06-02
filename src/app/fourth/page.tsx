@@ -7,7 +7,7 @@ export const metadata = {
     siteName: "4번째 페이지 연습",
     images: [
       {
-        url: "/fourth/opengraph-image",
+        url: "https://next-og-practice.vercel.app/fourth/opengraph-image",
       },
     ],
   },
@@ -18,7 +18,7 @@ export const metadata = {
     siteName: "4번째 페이지 연습",
     images: [
       {
-        url: "/fourth/opengraph-image",
+        url: "https://next-og-practice.vercel.app/fourth/opengraph-image",
       },
     ],
   },
